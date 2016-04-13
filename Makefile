@@ -6,34 +6,28 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/22 12:06:57 by aeddi             #+#    #+#              #
-#    Updated: 2015/02/17 14:03:29 by aeddi            ###   ########.fr        #
+#    Updated: 2016/04/13 15:31:42 by aeddi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	test
+NAME			=	libfts.a
+
 AS				=	nasm
 ASFLAGS			=	-f macho64
-CC				=	gcc
-CFLAGS			=	-Werror -Wextra -Wall -g3
-LD				=	ld
-LDFLAGS			=	-no_pie -arch x86_64 -macosx_version_min 10.8
-LDCFLAGS		=	-lc
+
+AR				=	ar
+ARFLAGS			=	rcs
+
 OBJS_DIR		=	./objects
 SRCS_DIR		=	./sources
-OBJS_C			=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SRCS_C))
-SRCS_C			=	test.c
 OBJS_AS			=	$(patsubst %.s, $(OBJS_DIR)/%.o, $(SRCS_AS))
 SRCS_AS			=	ft_strlen.s
 
 all				:	$(NAME)
 
-$(NAME)			:	$(OBJS_DIR) $(OBJS_C) $(OBJS_AS)
-	@$(LD) -o $(NAME) $(LDFLAGS) $(OBJS_C) $(OBJS_AS) $(LDCFLAGS)
+$(NAME)			:	$(OBJS_DIR) $(OBJS_AS)
+	@$(AR) $(ARFLAGS) $(NAME) $(OBJS_AS)
 	@echo "]   \033[1;32mDone\033[0;0m"
-
-$(OBJS_DIR)/%.o	:	$(addprefix $(SRCS_DIR)/, %.c)
-	@$(CC) $(CFLAGS) -o $@ -c $^
-	@echo ".\c"
 
 $(OBJS_DIR)/%.o	:	$(addprefix $(SRCS_DIR)/, %.s)
 	@$(AS) $(ASFLAGS) -o $@ $^
