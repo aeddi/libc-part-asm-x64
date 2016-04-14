@@ -6,14 +6,18 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/22 12:06:57 by aeddi             #+#    #+#              #
-#    Updated: 2016/04/13 15:31:42 by aeddi            ###   ########.fr        #
+#    Updated: 2016/04/15 01:02:24 by plastic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	libfts.a
 
 AS				=	nasm
-ASFLAGS			=	-f macho64
+ifeq ($(UNAME), Darwin)
+	ASFLAGS		=	-f macho64 --prefix _
+else
+	ASFLAGS		=	-f elf64
+endif
 
 AR				=	ar
 ARFLAGS			=	rcs
@@ -21,7 +25,9 @@ ARFLAGS			=	rcs
 OBJS_DIR		=	./objects
 SRCS_DIR		=	./sources
 OBJS_AS			=	$(patsubst %.s, $(OBJS_DIR)/%.o, $(SRCS_AS))
-SRCS_AS			=	ft_strlen.s
+SRCS_AS			=	ft_toupper.s	\
+					ft_tolower.s	\
+					ft_strlen.s
 
 all				:	$(NAME)
 

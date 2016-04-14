@@ -6,3 +6,7 @@ _ft_bzero:
 	mov		rbp, rsp
 
 	xor
+
+	mov		rsp, rbp		; Remove stack frame and return 
+	pop		rbp
+	ret
