@@ -6,7 +6,7 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/22 12:06:57 by aeddi             #+#    #+#              #
-#    Updated: 2016/04/15 17:54:37 by plastic          ###   ########.fr        #
+#    Updated: 2016/04/15 22:50:33 by plastic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME			=	libfts.a
 
 AS				=	nasm
 ifeq ($(UNAME), Darwin)
-	ASFLAGS		=	-f macho64 --prefix _
+	ASFLAGS		=	-f macho64 -D DARWIN=1 --prefix _
 else
-	ASFLAGS		=	-f elf64
+	ASFLAGS		=	-f elf64 -D LINUX=1
 endif
 
 AR				=	ar
@@ -34,7 +34,10 @@ SRCS_AS			=	ft_bzero.s		\
 					ft_isprint.s	\
 					ft_toupper.s	\
 					ft_tolower.s	\
+					ft_puts.s		\
+									\
 					ft_strlen.s		\
+									\
 					ft_islower.s	\
 					ft_isupper.s
 
