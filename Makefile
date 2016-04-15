@@ -6,7 +6,7 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/22 12:06:57 by aeddi             #+#    #+#              #
-#    Updated: 2016/04/15 12:42:53 by plastic          ###   ########.fr        #
+#    Updated: 2016/04/15 17:12:08 by plastic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ ARFLAGS			=	rcs
 OBJS_DIR		=	./objects
 SRCS_DIR		=	./sources
 OBJS_AS			=	$(patsubst %.s, $(OBJS_DIR)/%.o, $(SRCS_AS))
-SRCS_AS			=	ft_isalpha.s	\
+SRCS_AS			=	ft_bzero.s		\
+					ft_isalpha.s	\
 					ft_isdigit.s	\
 					ft_isalnum.s	\
 					ft_isascii.s	\
