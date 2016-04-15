@@ -1,9 +1,9 @@
 %define	MAX_64		0xffffffffffffffff
 
 section .text
-	global _ft_strlen
+	global ft_strlen
 
-_ft_strlen:
+ft_strlen:
 	push	rbp				; Set up a new stack frame
 	mov		rbp, rsp
 

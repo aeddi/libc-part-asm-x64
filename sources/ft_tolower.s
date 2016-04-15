@@ -5,15 +5,16 @@ ft_tolower:
 	push	rbp				; Set up a new stack frame
 	mov		rbp, rsp
 
-	cmp		rdi, 'A'		; If parameter is less than 'A'
-	jb		return			; Return it unchanged
-	cmp		rdi, 'Z'		; If parameter is more than 'Z'
-	ja		return			; Return it unchanged
+	mov		rax, rdi		; Use parameter as return value
 
-	add		rdi, 32			; Add 32 to parameter (lowercase)
+	cmp		rdi, 'A'		; If parameter is less than 'A'
+	jl		return			; Return it unchanged
+	cmp		rdi, 'Z'		; If parameter is greater than 'Z'
+	jg		return			; Return it unchanged
+
+	add		rax, 32			; Add 32 to parameter (lowercase)
 
 return:
-	mov		rax, rdi		; Use parameter as return value
 	mov		rsp, rbp		; Remove stack frame and return 
 	pop		rbp
 	ret
