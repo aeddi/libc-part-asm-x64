@@ -22,7 +22,6 @@ ft_puts:
 
 	push	rdi				; Save registers to stack
 	push	rsi
-	push	rdx
 
 	test	rdi, rdi		; If str parameter == NULL
 	jz		print_null		; Print null message
@@ -58,8 +57,7 @@ error:
 	mov		rax, EOF		; Set EOF as return value
 
 return:
-	pop		rdx				; Restore registers from stack
-	pop		rsi
+	pop		rsi				; Restore registers from stack
 	pop		rdi
 
 	mov		rsp, rbp		; Remove stack frame and return 

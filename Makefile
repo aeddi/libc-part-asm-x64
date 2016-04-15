@@ -6,7 +6,7 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/22 12:06:57 by aeddi             #+#    #+#              #
-#    Updated: 2016/04/16 00:37:02 by plastic          ###   ########.fr        #
+#    Updated: 2016/04/16 01:13:17 by plastic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS_AS			=	ft_bzero.s		\
 					ft_strlen.s		\
 					ft_memset.s		\
 					ft_memcpy.s		\
+					ft_strdup.s		\
 									\
 					ft_islower.s	\
 					ft_isupper.s
