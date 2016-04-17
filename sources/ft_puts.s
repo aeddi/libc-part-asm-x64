@@ -32,7 +32,9 @@ ft_puts:
 	mov		rsi, rdi		; Set str pointer as second write parameter
 	mov		rdi, STDOUT		; Set STDOUT as first write parameter
 	syscall					; Call write
-	jc		error			; Error return on fail
+
+	test	rax, rax		; Check write return
+	js		error			; If < 0: return error
 
 print_newl:
 	mov		rax, WRITE		; Set write syscall index
@@ -40,7 +42,10 @@ print_newl:
 	lea		rsi, [rel newl]	; Set newl pointer as second write parameter
 	mov		rdx, 1			; Set length as third write parameter
 	syscall					; Call write
-	jc		error			; Error return on fail
+
+	test	rax, rax		; Check write return
+	js		error			; If < 0: return error
+
 	mov		rax, 1			; Set non-negative return value
 	jmp		return			; Return
 
@@ -50,7 +55,10 @@ print_null:
 	lea		rsi, [rel null]	; Set null pointer as second write parameter
 	mov		rdx, len		; Set length as third write parameter
 	syscall					; Call write
-	jc		error			; Error return on fail
+
+	test	rax, rax		; Check write return
+	js		error			; If < 0: return error
+
 	jmp		print_newl		; Print new line
 
 error:

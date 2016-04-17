@@ -6,7 +6,7 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/22 12:06:57 by aeddi             #+#    #+#              #
-#    Updated: 2016/04/16 01:13:17 by plastic          ###   ########.fr        #
+#    Updated: 2016/04/17 23:19:52 by plastic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,30 +41,46 @@ SRCS_AS			=	ft_bzero.s		\
 					ft_memcpy.s		\
 					ft_strdup.s		\
 									\
+					ft_cat.s		\
+									\
+					ft_labs.s		\
+					ft_llabs.s		\
 					ft_islower.s	\
-					ft_isupper.s
+					ft_isupper.s	\
+					ft_putchar_fd.s	\
+					ft_putnbr_fd.s	\
+					ft_strcmp.s
+
+PROC_COL		=	\033[1;34m
+DELT_COL		=	\033[1;31m
+DONE_COL		=	\033[1;32m
+BOLD_COL		=	\033[1;39m
+BASE_COL		=	\033[0m
 
 all				:	$(NAME)
+	@printf "$(DONE_COL) Building done $(BASE_COL)\n"
+
+test			: 	$(NAME)
+	@$(MAKE) -C tests re
 
 $(NAME)			:	$(OBJS_DIR) $(OBJS_AS)
+	@printf "$(PROC_COL) Building: $(BOLD_COL) $(NAME) $(BASE_COL)\n"
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJS_AS)
-	@echo "]   \033[1;32mDone\033[0;0m"
 
 $(OBJS_DIR)/%.o	:	$(addprefix $(SRCS_DIR)/, %.s)
+	@printf "$(PROC_COL) Compiling: $(BOLD_COL) $@ $(BASE_COL)\n"
 	@$(AS) $(ASFLAGS) -o $@ $^
-	@echo ".\c"
 
 $(OBJS_DIR)		:
 	@mkdir -p $(OBJS_DIR)
-	@echo "\033[1;32mCompiling sources  \033[0;0m[\c"
 
 fclean			:	clean
 	@rm -f $(NAME)
-	@echo "\033[1;31mCompiled binary deleted\033[0;0m"
+	@printf "$(DELT_COL) Deleting: $(BOLD_COL) $(NAME) $(BASE_COL)\n"
 
 clean			:
 	@rm -rf $(OBJS_DIR)
-	@echo "\033[1;31mObjects deleted\033[0;0m"
+	@printf "$(DELT_COL) Deleting: $(BOLD_COL) $(OBJS_DIR) $(BASE_COL)\n"
 
 re				:	fclean all
 
