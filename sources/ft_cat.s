@@ -26,6 +26,7 @@ ft_cat:
 
 	push	rdi				; Save registers to stack
 	push	rsi
+	push	r8
 
 	mov		r8, rdi			; Save fd into a safe register
 
@@ -60,7 +61,8 @@ print_error:
 	mov		rax, -1			; Set error return value
 
 return:
-	pop		rsi				; Restore registers from stack
+	pop		r8				; Restore registers from stack
+	pop		rsi
 	pop		rdi
 
 	mov		rsp, rbp		; Remove stack frame and return 
