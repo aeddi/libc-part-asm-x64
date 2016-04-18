@@ -1,3 +1,5 @@
-ft_x.s
 *.a
 *.o
+run_test
+/tests/check/*
+!/tests/check/check*.tar.gz

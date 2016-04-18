@@ -6,13 +6,13 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/22 12:06:57 by aeddi             #+#    #+#              #
-#    Updated: 2016/04/17 23:23:15 by plastic          ###   ########.fr        #
+#    Updated: 2016/04/18 11:06:16 by aeddi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	run_test
 
-CC				=	gcc
+CC				=	clang
 CFLAGS			=	-I $(CURDIR)/check/include -I $(CURDIR)/../includes -I $(CURDIR)/includes
 LFLAGS			=	-L $(CURDIR)/.. -lfts -L $(CURDIR)/check/lib -lcheck -Wl,-rpath,$(CURDIR)/check/lib
 
@@ -43,7 +43,7 @@ SRCS			=	test.c				\
 					part4_putnbr_fd.c	\
 					part4_strcmp.c
 
-LIBS			=	$(CURDIR)/check/lib/libcheck.so
+LIBS			=	$(CURDIR)/check/lib/libcheck.a
 
 all				:	$(NAME)
 	./$(NAME)
@@ -54,7 +54,7 @@ $(NAME)			:	$(OBJS_DIR) $(LIBS) $(OBJS)
 
 $(OBJS_DIR)/%.o	:	$(addprefix $(SRCS_DIR)/, %.c)
 	@printf "Compiling: $@\n"
-	@$(CC) $(CFLAGS) $(LFLAGS) -o $@ -c $^
+	@$(CC) $(CFLAGS) -o $@ -c $^
 
 $(OBJS_DIR)		:
 	@mkdir -p $(OBJS_DIR)

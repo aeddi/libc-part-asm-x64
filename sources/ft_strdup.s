@@ -12,6 +12,7 @@ ft_strdup:
 
 	test	rdi, rdi		; If str parameter == NULL
 	jz		return			; Return
+	js		return			; Return
 
 	call	ft_strlen		; Get str length
 	push	rdi				; Save str base pointer

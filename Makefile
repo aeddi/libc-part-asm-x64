@@ -6,14 +6,14 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/22 12:06:57 by aeddi             #+#    #+#              #
-#    Updated: 2016/04/17 23:19:52 by plastic          ###   ########.fr        #
+#    Updated: 2016/04/18 10:51:44 by aeddi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	libfts.a
 
 AS				=	nasm
-ifeq ($(UNAME), Darwin)
+ifeq ($(shell uname -s), Darwin)
 	ASFLAGS		=	-f macho64 -D DARWIN=1 --prefix _
 else
 	ASFLAGS		=	-f elf64 -D LINUX=1

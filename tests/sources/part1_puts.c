@@ -1,4 +1,8 @@
 #include <test.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/uio.h>
 
 START_TEST(simple_test)
 {

@@ -6,7 +6,7 @@
 /*   By: plastic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/17 19:45:33 by plastic           #+#    #+#             */
-/*   Updated: 2016/04/17 20:19:57 by plastic          ###   ########.fr       */
+/*   Updated: 2016/04/18 11:04:38 by aeddi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define IS_X_H
 
 # include <test.h>
+# include <ctype.h>
 
 # define test_is_x_unit(fn_name, test_name, tested_char)					\
 	START_TEST(test_## test_name)											\
