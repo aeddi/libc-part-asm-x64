@@ -3,9 +3,9 @@
 
 START_TEST(simple_test)
 {
-	ck_assert_int_eq(ft_strcmp("normal", "normal"), strcmp("normal", "normal"));
-	ck_assert_int_eq(ft_strcmp("moins", "mojns"), strcmp("moins", "mojns"));
-	ck_assert_int_eq(ft_strcmp("plus", "plts"), strcmp("plus", "plts"));
+	ck_assert_int_eq(ft_strcmp("equal", "equal"), strcmp("equal", "equal"));
+	ck_assert_int_eq(ft_strcmp("minus1-", "minus0-"), strcmp("minus1-", "minus0-"));
+	ck_assert_int_eq(ft_strcmp("plus0+", "plus1+"), strcmp("plus0+", "plus1+"));
 	ck_assert_int_eq(ft_strcmp("", ""), strcmp("", ""));
 }
 END_TEST
