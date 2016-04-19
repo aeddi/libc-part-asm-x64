@@ -20,16 +20,14 @@ ft_puts:
 	push	rbp				; Set up a new stack frame
 	mov		rbp, rsp
 
-	push	rdi				; Save registers to stack
-	push	rsi
-
 	test	rdi, rdi		; If str parameter == NULL
 	jz		print_null		; Print null message
 
+	push	rdi				; Save original str pointer before strlen call
 	call	ft_strlen		; Get str length
 	mov		rdx, rax		; Store it as third write parameter
 	mov		rax, WRITE		; Set write syscall index
-	mov		rsi, rdi		; Set str pointer as second write parameter
+	pop		rsi				; Set str pointer as second write parameter
 	mov		rdi, STDOUT		; Set STDOUT as first write parameter
 	syscall					; Call write
 
@@ -65,9 +63,6 @@ error:
 	mov		rax, EOF		; Set EOF as return value
 
 return:
-	pop		rsi				; Restore registers from stack
-	pop		rdi
-
 	mov		rsp, rbp		; Remove stack frame and return 
 	pop		rbp
 	ret

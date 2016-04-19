@@ -24,10 +24,6 @@ ft_cat:
 	push	rbp				; Set up a new stack frame
 	mov		rbp, rsp
 
-	push	rdi				; Save registers to stack
-	push	rsi
-	push	r8
-
 	mov		r8, rdi			; Save fd into a safe register
 
 while:
@@ -61,10 +57,6 @@ print_error:
 	mov		rax, -1			; Set error return value
 
 return:
-	pop		r8				; Restore registers from stack
-	pop		rsi
-	pop		rdi
-
 	mov		rsp, rbp		; Remove stack frame and return 
 	pop		rbp
 	ret

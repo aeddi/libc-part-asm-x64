@@ -5,8 +5,7 @@ ft_strcat:
 	push	rbp				; Set up a new stack frame
 	mov		rbp, rsp
 
-	push	rdi				; Save registers to stack
-	push	rsi
+	push	rdi				; Save original dest pointer to stack
 
 find_dest_end:
 	cmp		byte[rdi], 0	; If dest pointed byte is 0
@@ -24,9 +23,7 @@ copy_src:
 	test	al, al			; If src current byte is not 0
 	jnz		copy_src		; Repeat
 
-	pop		rsi				; Restore registers from stack
-	pop		rdi
-	mov		rax, rdi		; Return dest start pointer
+	pop		rax				; Set original dest pointer as return value
 
 	mov		rsp, rbp		; Remove stack frame and return 
 	pop		rbp
