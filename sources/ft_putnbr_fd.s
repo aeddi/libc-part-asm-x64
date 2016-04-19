@@ -6,7 +6,7 @@ ft_putnbr_fd:
 	push	rbp				; Set up a new stack frame
 	mov		rbp, rsp
 
-	push	rbx				; Save registers to stack according x86-64 cedcl
+	push	rbx				; Save register to stack according x86-64 cedcl
 
 	mov		edx, edi		; Copy parameter into a safe register
 	test	edx, edx		; If int parameter is unsigned
@@ -45,7 +45,7 @@ divide:
 	call	ft_putnbr_fd	; Call ft_putnbr_fd recursively
 
 return:
-	pop		rbx				; Restore registers from stack according x86-64 cedcl
+	pop		rbx				; Restore register from stack according x86-64 cedcl
 
 	mov		rsp, rbp		; Remove stack frame and return 
 	pop		rbp
