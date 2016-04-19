@@ -6,9 +6,11 @@
 /*   By: plastic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/17 19:45:33 by plastic           #+#    #+#             */
-/*   Updated: 2016/04/18 11:04:38 by aeddi            ###   ########.fr       */
+/*   Updated: 2016/04/19 19:13:34 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// CREDITS: Tests from yyang42: https://github.com/yyang42/moulitest
 
 #ifndef IS_X_H
 # define IS_X_H

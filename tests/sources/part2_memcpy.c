@@ -1,3 +1,5 @@
+// CREDITS: Tests from yyang42: https://github.com/yyang42/moulitest
+
 #include <test.h>
 
 START_TEST(simple_test)
