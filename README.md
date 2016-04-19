@@ -3,6 +3,8 @@ About
 Recode of some of the most used C functions in assembly x86-64 (Intel syntax). You'll need to install **nasm** to compil using the Makefile.
 The code is deliberately verbose and almost all lines are commented. 
 
+Compatible with **Linux** and **Darwin** (OSX).
+
 You can launch an unit tests suite using `make test`
 
 Functions
