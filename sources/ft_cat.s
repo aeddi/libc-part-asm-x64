@@ -32,6 +32,7 @@ while:
 	lea		rsi, [rel buf]	; Set buffer pointer as second read parameter
 	mov		rdx, BUF_SZ		; Set buff size as third read parameter
 	syscall					; Call read
+	jc		print_error		; If syscall set the carry flag: return error
 
 	test	rax, rax		; Check read return
 	js		print_error		; If < 0: return error
@@ -42,6 +43,7 @@ while:
 	mov		rdi, STDOUT		; Set STDOUT as first write parameter
 	lea		rsi, [rel buf]	; Set buffer pointer as second write parameter
 	syscall					; Call write
+	jc		print_error		; If syscall set the carry flag: return error
 
 	test	rax, rax		; Check write return
 	js		print_error		; If negative value: return error
@@ -53,6 +55,7 @@ print_error:
 	lea		rsi, [rel err]	; Set null pointer as second write parameter
 	mov		rdx, len		; Set length as third write parameter
 	syscall					; Call write
+	jc		print_error		; If syscall set the carry flag: return error
 
 	mov		rax, -1			; Set error return value
 

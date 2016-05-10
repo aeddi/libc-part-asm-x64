@@ -30,6 +30,7 @@ ft_puts:
 	pop		rsi				; Set str pointer as second write parameter
 	mov		rdi, STDOUT		; Set STDOUT as first write parameter
 	syscall					; Call write
+	jc		error			; If syscall set the carry flag: return error
 
 	test	rax, rax		; Check write return
 	js		error			; If < 0: return error
@@ -40,6 +41,7 @@ print_newl:
 	lea		rsi, [rel newl]	; Set newl pointer as second write parameter
 	mov		rdx, 1			; Set length as third write parameter
 	syscall					; Call write
+	jc		error			; If syscall set the carry flag: return error
 
 	test	rax, rax		; Check write return
 	js		error			; If < 0: return error
@@ -53,6 +55,7 @@ print_null:
 	lea		rsi, [rel null]	; Set null pointer as second write parameter
 	mov		rdx, len		; Set length as third write parameter
 	syscall					; Call write
+	jc		error			; If syscall set the carry flag: return error
 
 	test	rax, rax		; Check write return
 	js		error			; If < 0: return error
